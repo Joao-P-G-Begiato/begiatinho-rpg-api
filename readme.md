@@ -186,15 +186,13 @@ ctrl + c
 
 ---
 
-## ✒️ Autores
+## ✒️ Author
 
-Projeto desenvolvido em conjunto pelo Squad 1:
+**João Paulo Gotardi Begiato**   
 
-* **Fernando Patrick** - *Gestor de Conhecimento* - [FernandoPatrick](https://github.com/FernandoPatrick)
-* **Flávio Christovam** - *Desenvolvedor* - [fchristovam](https://github.com/fchristovam)
-* **João Paulo** - *Desenvolvedor* - [Joao-P-G-Begiato](https://github.com/Joao-P-G-Begiato)
-* **Lucas Passos** - *Gestor de Gente* - [LucasBinho](https://github.com/LucasBinho)
-* **Rafael Jordão** - *Co-Facilitador* - [rafaelljordao](https://github.com/rafaelljordao)
+<img src="./readme/linkedin.png" width="20px"/> [Linked-In](https://www.linkedin.com/in/joaopgbegiato/)  
+<img src="./readme/github.png" width="20px"/> [GitHub](https://github.com/Joao-P-G-Begiato)  
+<img src="./readme/email.png" width="20px"/> jpbegiato@hotmail.com  
 
 ---
 
