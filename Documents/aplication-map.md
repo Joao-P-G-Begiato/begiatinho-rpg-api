@@ -2,7 +2,7 @@
 
 ## Application Usage:
 
-this application will be used to integrate with the front-end of a platform that will initially allow the creation of characters for rpg, which may or may not scale to a platform in the virtual table top model, where in addition to character creation it may contain chats, scrolling data.
+this application will be used to integrate with the front-end of a platform that will initially allow the creation of characters for rpg, which may or may not scale to a platform in the virtual table top model, where in addition to character creation it may contain chats, dice roller and other features.
 
 ### Step 1 - User 
 

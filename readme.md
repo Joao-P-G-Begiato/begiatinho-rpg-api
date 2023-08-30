@@ -183,6 +183,7 @@ ctrl + c
 ## 🛠️ Working tools:   
 
 * [Node](https://nodejs.org/en/docs/)
+* [Jest](https://jestjs.io/docs/getting-started)
 
 ---
 
