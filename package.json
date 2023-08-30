@@ -1,5 +1,33 @@
 {
   "dependencies": {
+    
+  },
+  "name": "begiatinho-rpg-api",
+  "description": "This project aims to train and develop the practice of using the concepts of clean code, clean architecture and TDD.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
     "jest": "^29.6.4"
-  }
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joao-P-G-Begiato/begiatinho-rpg-api.git"
+  },
+  "keywords": [
+    "rpg",
+    "api",
+    "node",
+    "jest",
+    "js"
+  ],
+
+  "author": "João Paulo Gotardi Begiato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Joao-P-G-Begiato/begiatinho-rpg-api/issues"
+  },
+  "homepage": "https://github.com/Joao-P-G-Begiato/begiatinho-rpg-api#readme"
 }
