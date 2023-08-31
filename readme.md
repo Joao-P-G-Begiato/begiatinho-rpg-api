@@ -90,7 +90,7 @@ snap install insomnia
 
 
 
-## ⚙️ Executando a aplicação   
+## ⚙️ Execute Aplication
 
 To run the test you must enter the npm start command:   
 
@@ -184,7 +184,9 @@ ctrl + c
 
 * [Node](https://nodejs.org/en/docs/)
 * [Jest](https://jestjs.io/docs/getting-started)
-
+* [bcrypt](https://www.npmjs.com/package/bcrypt)
+* [JsonWebToken](https://jwt.io/introduction)
+* []
 ---
 
 ## ✒️ Author

@@ -1,9 +1,5 @@
 const UserInfoValidation = require ("../utils/helpers/user-validator")
 const UserConstructor = require("../data/adapter/UserConstructor")
-const dotenv = require("dotenv")
-
-
-dotenv.config()
 
 describe('User Creation Tests', ()=>{
     const mockReqBody = {
@@ -18,12 +14,11 @@ describe('User Creation Tests', ()=>{
         expect(validation).toBe(true)
     })
 
-    test('userGeneration test', async ()=>{
+    test('userConstructor test', async ()=>{
         const user = await new UserConstructor(mockReqBody).userGenerator()
         const test = user != false ? true : false
         expect(test).toBe(true)
     })
-
 })
 
 
