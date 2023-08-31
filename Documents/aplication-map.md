@@ -14,8 +14,8 @@ For the user Entity we gonna need:
 
 before creating the user we need to validate the information to ensure that we will not feed the database with garbage and only after this validation will we compose the user model with the information provided and only then will we connect to the database to actually create this user
 
-* Validate Information
-* Compose Model
+* Validate Information ✅
+* Compose Model ✅
 * Conect with the db
 * Create user
 
