@@ -2,7 +2,8 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "dotenv": "^16.3.1",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.0.0"
   },
   "name": "begiatinho-rpg-api",
   "description": "This project aims to train and develop the practice of using the concepts of clean code, clean architecture and TDD.",
