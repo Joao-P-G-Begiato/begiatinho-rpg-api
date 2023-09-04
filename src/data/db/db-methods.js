@@ -1,9 +1,5 @@
 const {MongoClient, ObjectId} = require('mongodb')
 const dotenv = require('dotenv')
-const UserModel = require('../../domain/models/UserModel')
-dotenv.config()
-
-
 
 class MongoDBMethods{
     constructor(url, database){
@@ -54,14 +50,12 @@ class MongoDBMethods{
         }
     }
 
-    async deleteOne(collection, id){
+    async deleteOneById(collection, id){
         try{
             const db = await this.connectDB()
             if(db){
                 const idToDelete = new ObjectId(id)
-
                 const deleteEntry = await db.collection(collection).deleteOne({_id: idToDelete})
-                console.log(deleteEntry)
                 return deleteEntry
             }
 
@@ -70,31 +64,21 @@ class MongoDBMethods{
         }finally{
             await this.client.close(true)
         }
-
-
     }
 
+    async updateOneById(collection, id, update){
+        try{
+            const db = await this.connectDB()
+            if(db){
+                const idToUpdate = new ObjectId(id)
+                const updateEntry = await db.collection(collection).updateOne({_id: idToUpdate}, {$set: update} )
+                return updateEntry
+            }
 
+        }catch (e){
+            console.log(e)
+        }finally{
+            await this.client.close(true)
+        }
+    }
 }
-
-// const url = process.env.DB_URL
-
-// const user = new UserModel("João", "jpbegiato", "Dudadema@3005", "jpbegiato@hotmail.com")
-
-// const filter = {login: 'jpbegiato'}
-// const schema = {
-//     password: false
-// }
-
-
-
-// const client = new MongoDBMethods(url)
-// async function returnUser(){
-//     const result = await client.findOne("users", filter, schema)
-//     console.log(result)
-// } 
-
-// const teste = returnUser()
-
-// const deleteTest = client.deleteOne("users", "64f611cc0d25a0f71bfacd51")
-// console.log(deleteTest)
