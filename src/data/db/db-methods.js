@@ -1,4 +1,4 @@
-const {MongoClient} = require('mongodb')
+const {MongoClient, ObjectId} = require('mongodb')
 const dotenv = require('dotenv')
 const UserModel = require('../../domain/models/UserModel')
 dotenv.config()
@@ -6,15 +6,16 @@ dotenv.config()
 
 
 class MongoDBMethods{
-    constructor(url){
+    constructor(url, database){
         this.client = new MongoClient(url)
+        this.database = database
     }
 
     async connectDB(){
         try{
             const db = await this.client.connect()
             console.log("successful connection")
-            return db.db("RPG-API")
+            return db.db(this.database)
         }catch (e) {
             console.log(e) 
             console.log("Connection Error") 
@@ -27,12 +28,13 @@ class MongoDBMethods{
             const db = await this.connectDB()
             if(db){
                 const creation = await db.collection(collection).insertOne(document)
-                console.log(creation)
-                return true
+                return creation
             }
         }catch (e){
             console.log(e)
             console.log("Creation Error")
+        }finally{
+            await this.client.close(true)
         }
     }
 
@@ -48,28 +50,51 @@ class MongoDBMethods{
         }catch (e){
             console.log(e)
         }finally{
-            await this.client.close()
+            await this.client.close(true)
         }
+    }
+
+    async deleteOne(collection, id){
+        try{
+            const db = await this.connectDB()
+            if(db){
+                const idToDelete = new ObjectId(id)
+
+                const deleteEntry = await db.collection(collection).deleteOne({_id: idToDelete})
+                console.log(deleteEntry)
+                return deleteEntry
+            }
+
+        }catch (e){
+            console.log(e)
+        }finally{
+            await this.client.close(true)
+        }
+
+
     }
 
 
 }
 
-const url = process.env.DB_URL
+// const url = process.env.DB_URL
 
-const user = new UserModel("João", "jpbegiato", "Dudadema@3005", "jpbegiato@hotmail.com")
+// const user = new UserModel("João", "jpbegiato", "Dudadema@3005", "jpbegiato@hotmail.com")
 
-const filter = {login: 'jpbegiato'}
-const schema = {
-    password: false
-}
+// const filter = {login: 'jpbegiato'}
+// const schema = {
+//     password: false
+// }
 
 
 
-const testeConnection = new MongoDBMethods(url)
-async function returnUser(){
-    const result = await testeConnection.findOne("users", filter, schema)
-    console.log(result)
-} 
+// const client = new MongoDBMethods(url)
+// async function returnUser(){
+//     const result = await client.findOne("users", filter, schema)
+//     console.log(result)
+// } 
 
-const teste = returnUser()
+// const teste = returnUser()
+
+// const deleteTest = client.deleteOne("users", "64f611cc0d25a0f71bfacd51")
+// console.log(deleteTest)
