@@ -7,49 +7,44 @@ dotenv.config()
 
 class MongoDBMethods{
     constructor(url){
-        console.log(url)
         this.client = new MongoClient(url)
     }
 
     async connectDB(){
-        console.log(this.client)
         try{
-            await this.client.connect()
-            await this.client.db().admin().listDatabases()
-            .then(console.log("successful connection"))
+            const db = await this.client.connect()
+            console.log("successful connection")
+            return db.db("RPG-API")
         }catch (e) {
-            console.log("connection Error: " + e) 
-        } finally{
-            await this.client.close()
+            console.log(e) 
+            console.log("Connection Error") 
+            return false
         }
     }
 
     async insertSingleDocument(collection, document){
         try{
-            await this.client.connect()
-            await this.client.db.collection(collection).insertOne(document)
+            const db = await this.connectDB()
+            if(db){
+                const creation = await db.collection(collection).insertOne(document)
+                console.log(creation)
+                return true
+            }
         }catch (e){
             console.log(e)
-        }finally{
-            await this.client.close()
+            console.log("Creation Error")
         }
     }
 
-    async insertSingleDocument(collection, document){
+    async findOne(collection, filter , returnSchema){
         try{
-            await this.client.connect()
-            await this.client.db.collection(collection).insertOne(document)
-        }catch (e){
-            console.log(e)
-        }finally{
-            await this.client.close()
-        }
-    }
+            const db = await this.connectDB()
+            if(db){
+                console.log(returnSchema)
+                const find = await db.collection(collection).findOne(filter,{ projection:returnSchema})
+                return find
+            }
 
-    async find(collection, filter , returnSchema){
-        try{
-            await this.client.connect()
-            await this.client.db.collection(collection).find(filter, returnSchema)
         }catch (e){
             console.log(e)
         }finally{
@@ -60,15 +55,21 @@ class MongoDBMethods{
 
 }
 
-// const teste = new MongoDBMethods(process.env.DB_URL)
-
 const url = process.env.DB_URL
-console.log(url)
 
 const user = new UserModel("João", "jpbegiato", "Dudadema@3005", "jpbegiato@hotmail.com")
-Object.assign(user, )
+
+const filter = {login: 'jpbegiato'}
+const schema = {
+    password: false
+}
 
 
 
+const testeConnection = new MongoDBMethods(url)
+async function returnUser(){
+    const result = await testeConnection.findOne("users", filter, schema)
+    console.log(result)
+} 
 
-const addUser = new MongoDBMethods(url).connectDB()
+const teste = returnUser()
